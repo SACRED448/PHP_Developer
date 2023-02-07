@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <?php
@@ -17,12 +18,12 @@
  $x2 = 0;
 ?>
 
-    <h1>Решение квадратного уравнения</h1>
     <form action="index.php" method="post">
+        <div style="font-size: 20px; font-weight: bold">Решение квадратного уравнения</div><br>
     a =  <input type="text" name="a" value="<?php echo $a; ?>"><br><br>
     b =  <input type="text" name="b" value="<?php echo $b; ?>"><br><br>
     c =  <input type="text" name="c" value="<?php echo $c; ?>"><br><br>
-    <button>Найти решение</button> <a href="history.html">История</a><br><br>
+    <button>Найти решение</button> <a href="history.php"><br><br>История</a><br><br>
     </form>
 
 <?php
@@ -36,19 +37,26 @@ if(isset( $_POST['a'])) { //Вывод на экран при нажатии к�
     echo $a."x^2 + ".$b."x + ".$c." = 0"."<br><br>";
     echo "D = ".floatval($D = $b*$b-4*$a*$c)."<br><br>";
 
-    if($D > 0) { //два корня
-        $x1 = (-$b + sqrt($D))/(2*$a);
-        $x2 = (-$b - sqrt($D))/(2*$a);
-        echo "x1 = ".$x1."<br><br> x2 = ".$x2;
-    } elseif ($D == 0) { //один корень
-        $x1 = -$b/(2*$a);
-        echo "x = ". $x1;
-    } else {
-        echo "Решений нет";
+    function check_D($a, $b, $D) {
+        if($D > 0) { //два корня
+            $x1 = (-$b + sqrt($D))/(2*$a);
+            $x2 = (-$b - sqrt($D))/(2*$a);
+            echo "x1 = ".$x1."<br><br> x2 = ".$x2;
+        } elseif ($D == 0) { //один корень
+            $x1 = -$b/(2*$a);
+            echo "x = ". $x1;
+        } else {
+            echo "Решений нет";
+        }
     }
 
-}
+    check_D($a, $b, $D);
+    $filename = "history.php"; //История введённых данных
+    $data = "<div>a = $a b = $b c = $c D = $D</div><br><br>";
+    file_put_contents($filename, $data, FILE_APPEND);
 
+
+}
 
 
 ?>
