@@ -12,8 +12,14 @@ button {
     border-radius: 15px;
 }
 
+.button_remove {
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+}
+
 form {
-    background-color: lightskyblue;
     text-align: center;
 
 }
