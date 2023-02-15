@@ -54,9 +54,14 @@ if(isset( $_POST['a'])) { //Вывод на экран при нажатии к�
     $filename = "history.php"; //История введённых данных
     $data = "<div>a = $a b = $b c = $c D = $D</div><br><br>";
     file_put_contents($filename, $data, FILE_APPEND);
-
+    require_once ("config.php");
+    $connect = mysqli_connect("localhost", "root", "", "History");
+    $Solve = $_POST['Solve'];
+    mysqli_query($connect, "INSERT INTO `Calculation` (`ID`, `Solve`) VALUES (`$data`)");
 
 }
+
+
 
 
 ?>

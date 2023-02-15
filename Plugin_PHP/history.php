@@ -21,4 +21,4 @@
 
 <input value = "Очистить историю" class="button_remove" onclick="clearPage()" type="button">
 
-</body>
+</body><div>a = 1 b = 2 c = 3 D = -8</div><br><br><div>a = 1 b = 2 c = 3 D = -8</div><br><br><div>a = 1 b = 1 c = 1 D = -3</div><br><br><div>a = 1 b = 1 c = 1 D = -3</div><br><br><div>a = 1 b = 1 c = 1 D = -3</div><br><br>
